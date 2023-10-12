@@ -12,7 +12,8 @@ function IndexPopup() {
     function setMessageBasedOnTab() {
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const tab = tabs[0]
-        if (tab && tab.url.includes("twitter.com")) {
+        
+        if (tab && tab.url) {
           setMessage("You are on a Twitter page!")
         } else {
           setMessage("This extension only works on Twitter pages.")
