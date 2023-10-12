@@ -1,27 +1,36 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import * as ReactDOM from "react-dom"
+
+import "./popup.css"
+
+interface PopupProps {}
 
 function IndexPopup() {
-  const [data, setData] = useState("")
+  const [message, setMessage] = useState("Loading...")
+
+  useEffect(() => {
+    function setMessageBasedOnTab() {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const tab = tabs[0]
+        if (tab && tab.url.includes("twitter.com")) {
+          setMessage("You are on a Twitter page!")
+        } else {
+          setMessage("This extension only works on Twitter pages.")
+        }
+      })
+    }
+
+    setMessageBasedOnTab()
+  }, [])
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 16
-      }}>
-      <h2>
-        Welcome to your
-        <a href="https://www.plasmo.com" target="_blank">
-          {" "}
-          Plasmo
-        </a>{" "}
-        Extension!
-      </h2>
-      <input onChange={(e) => setData(e.target.value)} value={data} />
-      <a href="https://docs.plasmo.com" target="_blank">
-        View Docs
-      </a>
+    <div className="container">
+      <h1>FXTwitter Link Replacer</h1>
+      <p>
+        This extension replaces "twitter.com" links with "fxtwitter.com" links.
+      </p>
+
+      <div id="message">{message}</div>
     </div>
   )
 }
