@@ -1,6 +1,6 @@
 {
   "name": "fx-twitter",
-  "displayName": "Fx twitter",
+  "displayName": "Fx-Twitter Link Replacer",
   "version": "0.0.1",
   "description": "Replace x.com links with fxtwitter.com links.",
   "author": "Nangaim",
@@ -25,7 +25,7 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "*://twitter.com/*"
     ]
   }
 }
