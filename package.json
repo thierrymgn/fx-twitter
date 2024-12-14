@@ -1,13 +1,14 @@
 {
   "name": "fx-twitter",
   "displayName": "Fx-Twitter Link Replacer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Replace x.com links with fxtwitter.com links.",
   "author": "Nangaim",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
-    "test": "plasmo test"
+    "test": "plasmo test",
+    "build:firefox": "plasmo build --no-minify --no-hoist --zip --target=firefox-mv2"
   },
   "dependencies": {
     "plasmo": "0.83.0",

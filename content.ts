@@ -2,7 +2,7 @@ document.addEventListener("copy", (e: ClipboardEvent) => {
   const copiedText = window.getSelection()?.toString() || ""
 
   if (isTwitterLink(copiedText)) {
-    const modifiedText = copiedText.replace(/x\.com/g, "fxtwitter.com")
+    const modifiedText = copiedText.replace(/https?:\/\/x\.com/g, "https://fxtwitter.com")
 
     e.clipboardData.setData("text/plain", modifiedText)
 
@@ -11,5 +11,5 @@ document.addEventListener("copy", (e: ClipboardEvent) => {
 })
 
 function isTwitterLink(text: string): boolean {
-  return /x\.com/.test(text)
+  return /https?:\/\/x\.com/.test(text)
 }
